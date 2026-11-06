@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ClearCut — Remove an image background in your browser</title>
+  <meta name="description" content="Cut the background out of a photo entirely in your browser. No uploads, no accounts — the AI model runs on your device.">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <span class="site-name">ClearCut</span>
+    <span class="site-tagline">background removal that never leaves your device</span>
+  </header>
+
+  <main class="page">
+    <section class="upload-stage" aria-live="polite">
+      <p class="hero-kicker">Runs on your device · nothing uploaded</p>
+      <h1 class="hero-title">Cut the background out of any photo</h1>
+      <p class="hero-sub">Drop in a photo and get a clean PNG back with the background gone. It all runs in your browser, so the photo never leaves your machine.</p>
+
+      <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Choose an image: click, drag and drop, or paste">
+        <svg class="dropzone-icon" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3v12"/><path d="m7 10 5 5 5-5"/>
+          <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>
+        </svg>
+        <p class="dropzone-title">Drop an image here</p>
+        <p class="dropzone-sub">
+          click to browse,
+          <span id="paste-target" class="paste-hint">paste from the clipboard</span>
+        </p>
+        <input id="file-input" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+      </div>
+
+      <p id="status-area" class="status-area"></p>
+    </section>
+
+    <section id="result-section" class="result-section is-hidden">
+      <div id="compare-container" class="compare-container">
+        <div id="compare" class="compare">
+          <div class="pane pane-after checkerboard">
+            <img id="after-img" class="compare-img" alt="Result with background removed">
+          </div>
+          <div id="pane-before" class="pane pane-before">
+            <img id="before-img" class="compare-img" alt="Original image">
+          </div>
+          <div id="compare-handle" class="compare-handle" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="result-actions">
+        <a id="download-btn" class="btn btn-primary is-hidden" href="#" download="no-bg.png">Download PNG</a>
+        <button id="reset-btn" type="button" class="btn is-hidden">Start over</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Your image is processed locally with an AI model that downloads to your browser (~40 MB, cached) — it is never uploaded.</p>
+  </footer>
+</body>
+</html>
